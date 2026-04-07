@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bqqfo8lm5fi65"]
+
+[ext_resource type="Script" uid="uid://dfu5pi072cqk1" path="res://entities/characters/base_controller/base_controller.gd" id="1_e2sb0"]
+[ext_resource type="Script" uid="uid://s2abhyyhx0jb" path="res://entities/characters/base_controller/camera_controller.gd" id="2_x7thf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x7thf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7thf"]
+size = Vector3(0.423, 0.775, 0.42)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2sb0"]
+
+[node name="base_controller" type="CharacterBody3D" unique_id=1569977851]
+script = ExtResource("1_e2sb0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=650460143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_x7thf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=860074964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, -0.618)
+mesh = SubResource("BoxMesh_x7thf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1994561260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_e2sb0")
+
+[node name="neck_v" type="Marker3D" parent="." unique_id=1815658406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("2_x7thf")
+
+[node name="neck_h" type="Marker3D" parent="neck_v" unique_id=2043052532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="neck_v/neck_h" unique_id=672462398]
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="neck_v/neck_h/SpringArm3D" unique_id=1794622495]
+keep_aspect = 0
+current = true

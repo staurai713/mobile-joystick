@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://7xi4hkym51ba"]
+
+[ext_resource type="PackedScene" uid="uid://c0kiv5eefdlwj" path="res://systems/joystick/joystick.tscn" id="1_fr8kv"]
+[ext_resource type="Script" uid="uid://d2x44i8tohr5a" path="res://systems/joystick/example/player2d.gd" id="2_wcvun"]
+[ext_resource type="Texture2D" uid="uid://dbo488l1lik8c" path="res://icon.svg" id="3_s85hg"]
+
+[node name="Node2D" type="Node2D" unique_id=1841165104]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1244881587]
+
+[node name="Joystick" parent="CanvasLayer" unique_id=1885096105 instance=ExtResource("1_fr8kv")]
+offset_left = -96.0
+offset_top = 66.0
+offset_right = -618.0
+offset_bottom = 169.0
+TextureBase = null
+joystick_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=122887700]
+position = Vector2(624, 315)
+script = ExtResource("2_wcvun")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=2089265352]
+texture = ExtResource("3_s85hg")
